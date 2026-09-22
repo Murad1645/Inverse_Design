@@ -88,11 +88,11 @@ if os.path.exists(V2):
     fig, ax = plt.subplots(figsize=(6.6, 4.4))
     bins = np.linspace(0, 1, 26)
     ax.hist(v2["Q_ratio"], bins=bins, alpha=0.55, color="#e4572e",
-            label=f"SPMe (v2): {100*(v2.Q_ratio<=0.2).mean():.0f}% fail at 3C")
+            label=f"SPMe (v2): {100*(v2.Q_ratio<=0.2).mean():.0f}% below threshold")
     ax.hist(df["Q_ratio"], bins=bins, alpha=0.55, color="#3b7dd8",
-            label=f"DFN (v3): {100*(df.Q_ratio<=0.2).mean():.0f}% fail at 3C")
+            label=f"DFN (v3): {100*(df.Q_ratio<=0.2).mean():.0f}% below threshold")
     ax.axvline(0.2, ls="--", color="black", lw=1)
-    ax.text(0.205, ax.get_ylim()[1]*0.9, "failure threshold (0.2)", fontsize=8)
+    ax.text(0.205, ax.get_ylim()[1]*0.9, "low-retention threshold (0.2)", fontsize=8)
     ax.set_xlabel("Rate capability Q₃C/Q₀.₅C")
     ax.set_ylabel("Number of designs")
     ax.set_title("Reduced-order (SPMe) vs full physics (DFN)")
